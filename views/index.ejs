@@ -1,0 +1,31 @@
+  <div class="author">
+     <h1 class="author__heading">HI, TECH TRIBES</h1>
+     <p class="author_body"> A community of innovators, creators, and tech enthusiasts passionate about web development</p>
+  </div>
+
+
+  
+  <img src="/images/p.jpg" alt="p" class="hero-image" width="981" height="528">
+
+  <section  class="articles">
+       <h2 class="article__heading">Latest Posts</h2>
+   <ul class="article-ul">
+            <% data.forEach(post => {  %>
+               
+                        <li>
+                           <a href="/post/<%=post._id%>">
+                              <span> <%= post.title %></span>
+                              <span class="article-list__date"><%= post.createdAt.toDateString() %></span>
+                           </a>
+                        </li>                           
+            
+            <% }) %>
+
+         </ul>
+        
+       <% if (nextPage !== null) { %>
+            <a href="/?page=<%= nextPage %>" class="pagination">&lt; view older posts</a>
+       
+            <% } %>
+  
+  </section>

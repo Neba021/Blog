@@ -1,0 +1,25 @@
+
+<!-- post.ejs -->
+
+<h1><%= data.title %></h1>
+<p><%= data.body %></p>
+
+<!-- Display Comments -->
+<h4>Comments:</h4>
+<% comments.forEach(comment => { %>
+  <div class="comment">
+    <p><strong><%= comment.author %></strong> says:</p>
+    <p><%= comment.content %></p>
+    <p><small>Posted on <%= comment.createdAt.toDateString() %></small></p>
+  </div>
+<% }); %>
+
+<!-- Form to add a new comment -->
+<h3>Add a Comment:</h3>
+<form action="/post/<%= data._id %>/comment" method="POST">
+  <textarea name="content" required placeholder="Enter your comment here..."></textarea>
+  <br>
+  <input type="text" name="author" placeholder="Your name (Optional)">
+  <br>
+  <input type="submit" value="Submit" class="btn">
+</form>

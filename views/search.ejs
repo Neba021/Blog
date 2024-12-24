@@ -1,0 +1,30 @@
+
+<div class="author">
+  <h1 class="author__heading">Search Result</h1>
+</div>
+
+<section class="articles">
+  <!-- Check if there are any posts returned -->
+  <% if (data.length > 0) { %>
+    <ul class="article-ul">
+      <% data.forEach(post => { %>      
+        <li>
+          <a href="/post/<%= post._id %>">
+            <span><%= post.title %></span>
+            <span class="article-list_date"><%= post.createdAt.toDateString() %></span>
+          </a>
+          <!-- Display tags associated with the post -->
+          <div class="tags">
+            <% if (post.tags && post.tags.length > 0) { %>
+              <span><strong>Tags:</strong> <%= post.tags.join(', ') %></span>
+            <% } else { %>
+              <span><strong>No Tags</strong></span>
+            <% } %>
+          </div>
+        </li>
+      <% }) %>
+    </ul>
+  <% } else { %>
+    <p>No posts found matching your search criteria.</p>
+  <% } %>
+</section>
